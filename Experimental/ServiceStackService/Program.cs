@@ -100,6 +100,8 @@ namespace ServiceStackService
 			var listeningOn = args.Length == 0 ? "http://*:1337/" : args[0];
 			var appHost = new AppHost();
 			appHost.Init();
+			// currently the following line will throw a HttpListnerException with "Access is denied" message
+			// to avoid this, run VisualStudio as administrator
 			appHost.Start(listeningOn);
 
 			Console.WriteLine("AppHost Created at {0}, listening on {1}", DateTime.Now, listeningOn);
@@ -107,7 +109,6 @@ namespace ServiceStackService
 				Console.ReadKey();
 				//appHost.SayHello("Bhavesh");
 			}
-			
 		}
 	}
 }
